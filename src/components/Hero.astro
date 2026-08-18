@@ -1,0 +1,34 @@
+---
+import { HERO } from '../config/content.ts';
+import WhatsAppButton from './WhatsAppButton.astro';
+---
+
+<section id="top" class="relative overflow-hidden border-b border-line/70 bg-canvas">
+  <!-- הילה עדינה ברקע — CSS בלבד, ללא תמונות וללא JavaScript -->
+  <div
+    class="pointer-events-none absolute inset-x-0 -top-40 h-96 bg-[radial-gradient(60%_100%_at_70%_0%,var(--color-brand-tint),transparent_70%)]"
+    aria-hidden="true"
+  >
+  </div>
+
+  <div class="relative mx-auto w-full max-w-5xl px-5 py-20 sm:px-8 sm:py-28 lg:py-36">
+    <p
+      class="inline-flex items-center rounded-full border border-brand/20 bg-brand-tint px-4 py-1.5 text-sm font-semibold text-brand-dark"
+    >
+      {HERO.eyebrow}
+    </p>
+
+    <h1 class="mt-7 max-w-3xl text-hero font-extrabold text-ink">
+      {HERO.title}
+    </h1>
+
+    <p class="mt-6 max-w-2xl text-lg leading-relaxed text-ink-soft sm:text-xl">
+      {HERO.subtitle}
+    </p>
+
+    <div class="mt-10 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
+      <WhatsAppButton label={HERO.ctaLabel} class="w-full justify-center sm:w-auto" />
+      <p class="text-sm text-ink-soft">{HERO.ctaNote}</p>
+    </div>
+  </div>
+</section>
