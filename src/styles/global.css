@@ -1,0 +1,88 @@
+@import 'tailwindcss';
+
+/* ——— הפונט: Heebo Variable, מוגש מקומית מתוך /fonts כדי למנוע בקשת רשת חיצונית ——— */
+@font-face {
+  font-family: 'Heebo';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/heebo-hebrew.woff2') format('woff2');
+  unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F;
+}
+
+@font-face {
+  font-family: 'Heebo';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/heebo-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+
+/* ——— השפה החזותית: צבעים, טיפוגרפיה ומרווחים ——— */
+@theme {
+  --font-sans: 'Heebo', ui-sans-serif, system-ui, 'Segoe UI', Arial, sans-serif;
+
+  --color-ink: #0a1614;
+  --color-ink-soft: #4c5f5c;
+  --color-canvas: #ffffff;
+  --color-canvas-alt: #f6faf9;
+  --color-line: #e3ebe9;
+  /* גוני המותג נבחרו כך שיעמדו ביחס ניגודיות של 4.5:1 לפחות מול לבן —
+     גם כטקסט על רקע בהיר וגם כרקע לכפתורים עם טקסט לבן. */
+  --color-brand: #0c7d6e;
+  --color-brand-dark: #095f54;
+  --color-brand-tint: #e7f5f2;
+
+  --text-hero: clamp(2.125rem, 1.35rem + 3.4vw, 3.75rem);
+  --text-hero--line-height: 1.12;
+  --text-section: clamp(1.625rem, 1.2rem + 1.8vw, 2.5rem);
+  --text-section--line-height: 1.2;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* טיפוגרפיה עברית: איזון בין אורך שורה לנשימה */
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+  letter-spacing: -0.015em;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+/* מיקוד נגיש ואחיד לכל האלמנטים האינטראקטיביים */
+:where(a, button):focus-visible {
+  outline: 3px solid var(--color-brand);
+  outline-offset: 3px;
+  border-radius: 0.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
